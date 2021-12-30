@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Emotion Detection</title>
+  <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/site.css" />
+  <script src="/lib/jquery/dist/jquery.min.js"></script>
+  <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script defer src="/js/face-api.min.js"></script>
+  <script defer src="/js/site.js"></script>
+</head>
+<body>
+    <p>Control color of lights on an Arduino wiht your emotions</p>
+    <ul>
+        <li>Green - Happy</li>
+        <li>Red - Angry</li>
+        <li>Yellow - Sad</li>
+        <li>None - Neutral</li>
+    </ul>
+    <button id="start" class="btn btn-primary" onclick="startVideo();">Begin</button>
+    <button id="begin" class="btn btn-warning" onclick="track(true);">Begin Emotion Detection</button>
+    <button id="end" class="btn btn-secondary" onclick="track(false);">End Emotion Detection and Send to Arduino</button>
+    <br />
+    <video id="video" width="720" height="560" autoplay muted></video>
+</body>
+</html>
