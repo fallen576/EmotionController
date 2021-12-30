@@ -45,12 +45,37 @@ function startVideo() {
     )
 }
 
-function send() {
+/**
+ * Test data:
+ *   [
+    {
+      "angry" : ".9104",
+      "disgusted" : ".99",
+      "fearful" : "11.520",
+      "happy" : "10.852",
+      "neutral": "10.23",
+      "sad": "5.541",
+      "surprised" : "0.0154",
+    },
+    {
+      "angry" : ".9104",
+      "disgusted" : ".99",
+      "fearful" : "11.520",
+      "happy" : "10.852",
+      "neutral": "10.23",
+      "sad": "5.541",
+      "surprised" : "0.0154",
+    },
+  ]
+ */
+
+function send(test) {
     $.ajax({
         type: "POST",
-        contentType:"application/json",
+        contentType: "application/json",
         url: "/api/calc/emotion",
-        data: emotionData
+        //data: JSON.stringify(test)
+        data: JSON.stringify(emotionData)
     });
 }
 

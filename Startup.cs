@@ -59,6 +59,9 @@ namespace EmotionController
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            SerialComms.Init();
+            SerialComms.PrintPorts();
         }
     }
 }

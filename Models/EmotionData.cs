@@ -13,10 +13,10 @@ namespace EmotionController.Models
         public double neutral {get; set;}
         public double sad {get; set;}
         public double surprised {get; set;}
-    }
 
-    public class EmotionData
-    {
-        public List<Emotion> Emotions;
+        public override string ToString()
+        {
+            return $"angry {angry} sad {sad} happy {happy} nuetral {neutral}";
+        }
     }
 }
