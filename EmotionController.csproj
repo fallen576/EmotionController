@@ -4,4 +4,21 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+    <ItemGroup>
+    <None Include="wwwroot\*" />
+</ItemGroup>
+
+    <ItemGroup>
+      <Content Include="MyStaticFiles\face_expression_model-shard1" />
+      <Content Include="MyStaticFiles\face_landmark_68_model-shard1" />
+      <Content Include="MyStaticFiles\face_landmark_68_tiny_model-shard1" />
+      <Content Include="MyStaticFiles\face_recognition_model-shard1" />
+      <Content Include="MyStaticFiles\face_recognition_model-shard2" />
+      <Content Include="MyStaticFiles\tiny_face_detector_model-shard1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
+    </ItemGroup>
+
 </Project>

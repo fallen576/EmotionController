@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -7,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 
 namespace EmotionController
@@ -41,10 +43,12 @@ namespace EmotionController
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles(new StaticFileOptions
-{
-     FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, "Assets")),
-            RequestPath = "/Assets"
-});
+            {
+                ServeUnknownFileTypes = true,
+                FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, "MyStaticFiles")),
+                        RequestPath = "/static"
+            });
+            app.UseStaticFiles();
             app.UseRouting();
 
             app.UseAuthorization();
