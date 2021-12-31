@@ -74,8 +74,8 @@ function send(test) {
         type: "POST",
         contentType: "application/json",
         url: "/api/calc/emotion",
-        //data: JSON.stringify(test)
-        data: JSON.stringify(emotionData)
+        data: JSON.stringify(test)
+        //data: JSON.stringify(emotionData)
     });
 }
 

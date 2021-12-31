@@ -44,8 +44,9 @@ namespace EmotionController.Controllers
             List<double> happy = new List<double>();
             List<double> angry = new List<double>();
             List<double> neutral = new List<double>();
-
+            Console.WriteLine("we here???");
             foreach (Emotion emotions in emotData) {
+                Console.WriteLine("!!!! "  + emotions);
                 sad.Add(emotions.sad);
                 happy.Add(emotions.happy);
                 angry.Add(emotions.angry);
@@ -58,9 +59,9 @@ namespace EmotionController.Controllers
             double neutralCount = neutral.Sum();
 
             Dictionary<string, double> emotionTotals = new Dictionary<string, double>();
-            emotionTotals.Add("sad", sadCount);
-            emotionTotals.Add("happy", happyCount);
-            emotionTotals.Add("angry", angryCount);
+            emotionTotals.Add("blue", sadCount);
+            emotionTotals.Add("green", happyCount);
+            emotionTotals.Add("red", angryCount);
             emotionTotals.Add("neutral", neutralCount);
 
             var sortedDict = from entry in emotionTotals orderby entry.Value descending select entry;
