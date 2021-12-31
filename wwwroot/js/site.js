@@ -74,9 +74,10 @@ function send(test) {
         type: "POST",
         contentType: "application/json",
         url: "/api/calc/emotion",
-        data: JSON.stringify(test)
-        //data: JSON.stringify(emotionData)
+        //data: JSON.stringify(test)
+        data: JSON.stringify(emotionData)
     });
+    emotionData = [];
 }
 
 function track(on) {
@@ -104,6 +105,6 @@ function track(on) {
         $("#end").prop("disabled",true);
         window.clearInterval(customInterval);
         document.getElementsByTagName("canvas")[0].remove();
-        emotionData = [];
+        send("");
     }
 }

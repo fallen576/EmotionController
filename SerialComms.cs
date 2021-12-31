@@ -11,7 +11,8 @@ namespace EmotionController
         {
 
             _port.BaudRate = 9600;
-            _port.PortName = "COM3";
+            //_port.PortName = "COM3"; windows
+            _port.PortName = @"/dev/cu.usbmodem14201"; //mac
             Console.WriteLine(_port.PortName + " " + _port.IsOpen);
             _port.Open();
             Console.WriteLine(_port.PortName + " " + _port.IsOpen);
