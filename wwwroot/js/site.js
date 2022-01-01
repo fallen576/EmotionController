@@ -1,5 +1,7 @@
 ﻿$(document).ready(function() {
 
+    //majority of code taken from WebDevSimplified, https://www.youtube.com/watch?v=CVClHLwv-4I
+
     const video = document.getElementById("video");
 
     Promise.all([
@@ -16,22 +18,6 @@
             err => console.error(err)
         )
     }
-    
-    // video.addEventListener('play', () => {
-    //     const canvas = faceapi.createCanvasFromMedia(video)
-    //     document.body.append(canvas)
-    //     const displaySize = { width: video.width, height: video.height }
-    //     faceapi.matchDimensions(canvas, displaySize)
-    //     setInterval(async () => {
-    //         const detections = await faceapi.detectSingleFace(video, new faceapi.TinyFaceDetectorOptions())/*.withFaceLandmarks()*/.withFaceExpressions()
-    //         const resizedDetections = faceapi.resizeResults(detections, displaySize)
-    //         canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
-    //         faceapi.draw.drawDetections(canvas, resizedDetections)
-    //         //faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
-    //         faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
-    //         console.log(detections.expressions);
-    //     }, 2000)
-    //   })
 })
 let customInterval;
 let emotionData = [];
@@ -94,9 +80,9 @@ function track(on) {
             const resizedDetections = faceapi.resizeResults(detections, displaySize)
             canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
             faceapi.draw.drawDetections(canvas, resizedDetections)
-            //faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
+            //faceapi.draw.drawFaceLandmarks(canvas, resizedDetections) this makes my cpu fan very, very unhappy.
             faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
-            console.log(detections.expressions);
+            //console.log(detections.expressions);
             emotionData.push(detections.expressions);
         }, 1000)
     }

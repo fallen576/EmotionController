@@ -15,7 +15,7 @@ namespace EmotionController.Controllers
         public IActionResult CalculateEmotion(List<Emotion> emotData)
         {
             /*
-             
+               Example data from front end.
                [
                 {
                     "angry" : ".9104",
@@ -40,13 +40,16 @@ namespace EmotionController.Controllers
              
              */
 
+            //implement super impressive algorithm that google would use on interviews. /s
+            //basically taking all decimal values from each emotion and putting them into their own list
+            //from there sum the contents of each array so you have one numerical value for each emotion, biggest number wins.
             List<double> sad = new List<double>();
             List<double> happy = new List<double>();
             List<double> angry = new List<double>();
             List<double> neutral = new List<double>();
-            Console.WriteLine("we here???");
+
             foreach (Emotion emotions in emotData) {
-                Console.WriteLine("!!!! "  + emotions);
+                Console.WriteLine("Emotion values: "  + emotions);
                 sad.Add(emotions.sad);
                 happy.Add(emotions.happy);
                 angry.Add(emotions.angry);
@@ -66,12 +69,10 @@ namespace EmotionController.Controllers
 
             var sortedDict = from entry in emotionTotals orderby entry.Value descending select entry;
             var sortedList = sortedDict.ToList();
-            Console.WriteLine(sortedList.First().Key + " " + sortedList.First().Value + " " + sortedList.Last().Key + " " + sortedList.Last().Value);
-            //"E:sad-V:.9090E:angry-V:.3875"
-            //msg.split("E:")[1].split("-V:")[0] -> sad
-            //msg.split("-V:")[1].split("E:")[0] -> .9090
-            //msg.split("E:")[2].split("-V:")[0] -> angry
-            //msg.split("-V:")[1].split("E:")[1] -> .3875
+
+            //Console.WriteLine(sortedList.First().Key + " " + sortedList.First().Value + " " + sortedList.Last().Key + " " + sortedList.Last().Value);
+            
+            //only going to send the top 2 emotions because my LCD can't fit much more than that.
             string msg = "";
             int itr = 0;
             foreach (var i in sortedList) {
@@ -81,9 +82,9 @@ namespace EmotionController.Controllers
                 msg += $"E{i.Key}V{i.Value}";
                 itr++;
             }
-            //string msg = $"E:{sortedList.First().key}-V:{sortedList.First().Value}E:{sortedList.ElementAt(1).key}-V:{sortedList.ElementAt(1).Value}";
-            Console.WriteLine(msg);
-            //SerialComms.PortWrite(sortedList.First().Key);
+
+            //send to Arduino via serial communication
+            //Console.WriteLine(msg);
             SerialComms.PortWrite(msg);
 
             return Ok();

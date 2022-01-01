@@ -23,6 +23,7 @@ namespace EmotionController
             _port.Write(data);
         }
 
+        //print ports cause switching between mac and windows to develop this is annoying
         public static void PrintPorts()
         {
             foreach (string s in SerialPort.GetPortNames())
