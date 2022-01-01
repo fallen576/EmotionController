@@ -1,5 +1,5 @@
 # EmotionController
-Control LED Lights on Arduino via Emotion-Recognition.
+Control RGB light on an Arduino via emotion recognition.
 
 Backend - ASP.Net Core MVC Web Application, C++ Arduino Project
 Frontend - Vanilla JavaScript using the [face-api library](https://justadudewhohacks.github.io/face-api.js/docs/index.html) which is implemented on top of the tensorflow.js core API.
