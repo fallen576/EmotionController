@@ -20,7 +20,7 @@ namespace EmotionController.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return Redirect("/static/index.html");
         }
 
         public IActionResult Privacy()

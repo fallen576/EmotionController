@@ -98,7 +98,7 @@ function track(on) {
             faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
             console.log(detections.expressions);
             emotionData.push(detections.expressions);
-        }, 2000)
+        }, 1000)
     }
     else {
         $("#begin").prop("disabled",false);
